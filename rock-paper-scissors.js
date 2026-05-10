@@ -32,7 +32,8 @@ function getComputerChoice () {
 
 function getHumanChoice() {
 
-    let HumanInput = prompt("Rock, Paper, Scissors?");
+    let HumanInput = prompt("Rock, Paper or Scissors? Choose one wisely!");
+    return HumanInput;
 
 
 }
@@ -50,5 +51,69 @@ let computerScore = 0;
 
 
 /* 
-    
+    Step 5:
+    1. New function playRound
+    2. Two parameters for playRound: humanChoice and getComputerChoice
+    3. They need to gather human and computer choices
+    4. humanChoice must be case-insensitive (rock,ROCK,ROck = needs to be the same)
+    5. playRound needs to gather information from getComputerChoice and getHumanChoice
+    6.
+
+
+function playRound(humanChoice, computerChoice) {
+
+    humanChoice = humanChoice.toLowerCase();
+
+    if (humanChoice === computerChoice) {
+        display draw play again
+    } else if (humanChoice = "rock" && computerChoice = "paper") {
+        display humanChoice loses, computerChoice wins;
+    } else if (humanChoice = "rock" && computerChoice = "scissors") {
+        display humanChoice wins, computerChoice loses;
+    } else if (humanChoice = "paper" && computerChoice = "rock" ) {
+        display humanChoice wins, computerChoice loses;
+    }
+    } else if (humanChoice = "paper" && computerChoice = "scissors") {
+        display humanChoice loses, computerChoice wins;
+    }
+     else if (humanChoice = "scissors" && computerChoice = "paper" ) {
+            display humanChoice wins, computerChoice loses;
+    }
+     else if (humanChoice = "scissors" && computerChoice =  "rock") {
+        display humanChoice loses, computerChoice wins;
+
+    }
+}
+*/
+function playRound(humanChoice, computerChoice) {
+
+    humanChoice = humanChoice.toLowerCase();
+
+    if (humanChoice === computerChoice) {
+        console.log("It's a tie! Both chose " + humanChoice);
+    } else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
+    ) {
+        humanScore++;
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+    } else {
+        computerScore++;
+        console.log(`You lose! ${computerChoice} beats ${humanChoice} `);
+    }
+
+}
+
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
+/* 
+    Step 6:
+    1. New function playGame
+    2.
+
 */
