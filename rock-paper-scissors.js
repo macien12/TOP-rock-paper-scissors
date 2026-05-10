@@ -46,10 +46,6 @@ function getHumanChoice() {
     2. They must have value of 0
 */
 
-let humanScore = 0;
-let computerScore = 0;
-
-
 /* 
     Step 5:
     1. New function playRound
@@ -85,7 +81,48 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 */
-function playRound(humanChoice, computerChoice) {
+// function playRound(humanChoice, computerChoice) {
+
+//     humanChoice = humanChoice.toLowerCase();
+
+//     if (humanChoice === computerChoice) {
+//         console.log("It's a tie! Both chose " + humanChoice);
+//     } else if (
+//         (humanChoice === "rock" && computerChoice === "scissors") ||
+//         (humanChoice === "paper" && computerChoice === "rock") ||
+//         (humanChoice === "scissors" && computerChoice === "paper")
+//     ) {
+//         humanScore++;
+//         console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+//     } else {
+//         computerScore++;
+//         console.log(`You lose! ${computerChoice} beats ${humanChoice} `);
+//     }
+
+// }
+
+
+// const humanSelection = getHumanChoice();
+// const computerSelection = getComputerChoice();
+
+// playRound(humanSelection, computerSelection);
+
+/* 
+    Step 6:
+    1. New function playGame
+    2. Have to move playRound inside playGame
+    3. Gotta play playRound 5 time
+    4.
+
+*/
+
+
+function playGame() {
+    
+    let humanScore = 0;
+    let computerScore = 0;
+
+    function playRound(humanChoice, computerChoice) {
 
     humanChoice = humanChoice.toLowerCase();
 
@@ -104,16 +141,24 @@ function playRound(humanChoice, computerChoice) {
     }
 
 }
+for (let i = 0; i < 5; i++) {
+    console.log(`--- Round ${i + 1} ---`);
 
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    
+    playRound(humanSelection, computerSelection);
+}
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+console.log("--- FINAL SCORE ---");
+console.log(`Human: ${humanScore} | Computer: ${computerScore}`);
 
-playRound(humanSelection, computerSelection);
-
-/* 
-    Step 6:
-    1. New function playGame
-    2.
-
-*/
+if (humanScore > computerScore) {
+    console.log("Congratulations! You won the game!");
+} else if (computerScore > humanScore) {
+    console.log("Game Over! The computer wins");
+} else {
+    console.log("The whole game is a draw!");
+}
+}
+playGame();
